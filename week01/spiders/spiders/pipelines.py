@@ -10,4 +10,12 @@ from itemadapter import ItemAdapter
 
 class SpidersPipeline:
     def process_item(self, item, spider):
+        name = item['name']
+        type = item['type']
+        date = item['date']
+        import csv
+        f = open('./maoyanmovie.csv','a+',encoding='utf-8', newline='')
+        csv_writer = csv.writer(f)
+        csv_writer.writerow([name, type, date])
+        f.close()
         return item
